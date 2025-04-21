@@ -2,7 +2,7 @@
 
 // Redirect to the tryapp page
 function redirectToTryApp() {
-    window.location.href = "pages/index.html";
+    window.location.href = "pages/tryapp.html";
 }
 
 // Smooth scroll to a section
