@@ -1,0 +1,157 @@
+/* Components CSS for Eduplay */
+
+/* Hero Section */
+.hero {
+  background-color: #EBF4FF;
+  padding: 5rem 0;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  margin-bottom: 1.5rem;
+  font-size: 3rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Features */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.feature {
+  text-align: center;
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* About AR */
+.about-ar {
+  background-color: #F3F4F6;
+}
+
+.about-ar-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.about-ar-text {
+  flex: 1;
+}
+
+.about-ar-image {
+  flex: 1;
+}
+
+.about-ar-image img {
+  width: 100%;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* Impact */
+.impact-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+/* Teacher Corner */
+.resources {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.resource {
+  display: flex;
+  flex-direction: column;
+}
+
+.resource-image {
+  height: 200px;
+  overflow: hidden;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.resource-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.resource-content {
+  flex: 1;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* Contact */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #D1D5DB;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+}
+
+textarea.form-control {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
