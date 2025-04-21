@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduplay - التعلم بالواقع المعزز</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                    <img src="assets/logo/logo.png" alt="EDUplay Logo" style="height: 120px !important; margin-left: 18px;">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about-ar">عن الواقع المعزز</a></li>
+                    <li><a href="#impact">الأثر</a></li>
+                    <li><a href="#teacher">ركن المعلم</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+            </nav>
+            <button class="try-now-btn" id="try-now" onclick="redirectToTryApp()">جرّب الآن</button>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>حوّل التعلم إلى مغامرة مشوقة</h1>
+            <p>مبادرة Eduplay تجمع بين متعة التعلم وتقنية الواقع المعزز (AR) لخلق تجربة تعليمية تفاعلية فريدة تحفز الإبداع وتنمي المهارات</p>
+            <div class="hero-btns">
+                <button class="try-now-btn" id="try-now-hero" onclick="redirectToTryApp()">جرّب الآن</button>
+                <button class="secondary-btn" onclick="scrollToSection('about-ar')">تعرف علينا</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">كيف نحوّل التعلم إلى متعة؟</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8h1a4 4 0 010 8h-1"></path>
+                            <path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"></path>
+                        </svg>
+                    </div>
+                    <h3>تفاعل حقيقي</h3>
+                    <p>نجعل الطلاب يشاركون بنشاط في عملية التعلم من خلال تحويل المفاهيم المجردة إلى تجارب ملموسة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                        </svg>
+                    </div>
+                    <h3>تعلم ممتع</h3>
+                    <p>نحول المنهج الدراسي إلى رحلة مليئة بالاكتشاف والمتعة، مما يزيد من دافعية الطلاب للتعلم</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"></path>
+                        </svg>
+                    </div>
+                    <h3>تقنية حديثة</h3>
+                    <p>نوظف أحدث تقنيات الواقع المعزز لتقديم محتوى تعليمي يواكب متطلبات العصر الرقمي</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About AR Section -->
+    <section class="about-ar" id="about-ar">
+        <div class="container">
+            <div class="about-ar-content">
+                <div class="about-ar-text">
+                    <h2>ما هو الواقع المعزز؟</h2>
+                    <p>الواقع المعزز (AR) هو تقنية تدمج العناصر الرقمية مع العالم الحقيقي، مما يخلق طبقة إضافية من المعلومات والتفاعل. في Eduplay، نستخدم هذه التقنية لتحويل الكتب المدرسية والمواد التعليمية إلى تجارب تفاعلية ثلاثية الأبعاد.</p>
+                    <p>من خلال توجيه كاميرا الهاتف أو الجهاز اللوحي نحو صفحة أو صورة معينة، يمكن للطلاب رؤية النماذج والرسوم المتحركة تنبض بالحياة أمامهم، مما يساعدهم على فهم المفاهيم المعقدة بطريقة بسيطة وممتعة.</p>
+                    <button class="try-now-btn" id="try-now-about" onclick="redirectToTryApp()">جرّب بنفسك</button>
+                </div>
+                <div class="about-ar-img">
+                    <img src="assets/topics/q.jpg" alt="استخدام الواقع المعزز في التعليم">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Impact Section -->
+    <section class="impact" id="impact">
+        <div class="container">
+            <h2 class="section-title">هدفنا في تحسين التعليم</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">مدرسة مستهدفة</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">طالب مستهدف</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">زيادة متوقعة في التفاعل</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">70%</</div>
+                    <div class="stat-label">تحسن متوقع في الفهم</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Teacher Section -->
+    <section class="teacher-corner" id="teacher">
+        <div class="container">
+            <h2 class="section-title">ركن المعلم</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-img">دليل الاستخدام</div>
+                    <div class="resource-content">
+                        <h3>دليل المعلم الشامل</h3>
+                        <p>كل ما تحتاج معرفته لاستخدام تقنية الواقع المعزز بفعالية في الفصل الدراسي</p>
+                        <a href="#" class="download-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            تحميل الدليل
+                        </a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-img">أوراق عمل</div>
+                    <div class="resource-content">
+                        <h3>أوراق عمل تفاعلية</h3>
+                        <p>مجموعة من أوراق العمل المصممة خصيصًا للاستخدام مع تطبيق الواقع المعزز</p>
+                        <a href="#" class="download-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            تحميل الأوراق
+                        </a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-img">خطط دروس</div>
+                    <div class="resource-content">
+                        <h3>نماذج خطط دروس</h3>
+                        <p>خطط دروس جاهزة تدمج تقنية الواقع المعزز في مختلف المواد الدراسية</p>
+                        <a href="#" class="download-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            تحميل النماذج
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>تواصل معنا</h2>
+                    <p>هل تريد معرفة المزيد عن مبادرة Eduplay أو ترغب في تطبيقها في مدرستك؟ لا تتردد في التواصل معنا.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
+                                </svg>
+                            </div>
+                            <span>+966 12 345 6789</span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <span>info@eduplay.sa</span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <span>الرياض، المملكة العربية السعودية</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <a href="pages/contact.html" class="try-now-btn">صفحة التواصل الكاملة</a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">الاسم</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">الموضوع</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">الرسالة</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">إرسال</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- TryApp Section (Hidden Initially) -->
+    <section id="tryapp-section" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">جرّب تطبيق Eduplay</h2>
+            <div class="app-demo">
+                <div class="categories">
+                    <div class="category-card active" data-category="science">
+                        <div class="category-icon">🧪</div>
+                        <h3>العلوم</h3>
+                    </div>
+                </div>
+                
+                <!-- قسم العلوم -->
+                <div class="topics active" id="science-topics">
+                    <h3>مواضيع العلوم</h3>
+                    <div class="topics-grid">
+                        <!-- تركيب الخلية -->
+                        <div class="topic-card">
+                            <div class="topic-img">
+                                <img src="assets/topics/cell-structure.jpg" alt="تركيب الخلية">
+                            </div>
+                            <h4>تركيب الخلية</h4>
+                            <p>استكشف أجزاء الخلية في نموذج ثلاثي الأبعاد تفاعلي</p>
+                            <button class="view-btn" onclick="showCellModel()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                عرض النموذج
+                            </button>
+                        </div>
+                        
+                        <!-- الجهاز الهضمي -->
+                        <div class="topic-card">
+                            <div class="topic-img">
+                                <img src="assets/images/topics/digestive-system.jpg" alt="الجهاز الهضمي">
+                            </div>
+                            <h4>الجهاز الهضمي</h4>
+                            <p>تعرف على مراحل الهضم بطريقة تفاعلية</p>
+                            <button class="view-btn" onclick="showDigestiveModel()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                عرض النموذج
+                            </button>
+                        </div>
+                        
+                        <!-- تركيب الذرة -->
+                        <div class="topic-card">
+                            <div class="topic-img">
+                                <img src="assets/images/topics/atom-structure.jpg" alt="تركيب الذرة">
+                            </div>
+                            <h4>تركيب الذرة</h4>
+                            <p>استكشف تركيب الذرة ومكوناتها</p>
+                            <button class="view-btn" onclick="showAtomModel()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                عرض النموذج
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="secondary-btn" id="back-to-home" style="margin-top: 20px;">العودة للرئيسية</button>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="assets/logo/logo.png" alt="EDUplay Logo" style="height: 55px; margin-left: 10px;">
+                        <!-- يمكن إزالة كلمة Eduplay إذا كانت كلمة EDUplay موجودة بالفعل في الصورة -->
+                    </div>
+                    <p>نسعى لتغيير طريقة التعليم في الوطن العربي من خلال توظيف التقنيات الحديثة لخلق تجارب تعليمية ممتعة وفعالة.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about-ar">عن الواقع المعزز</a></li>
+                        <li><a href="#impact">الأثر</a></li>
+                        <li><a href="#teacher">ركن المعلم</a></li>
+                        <li><a href="#contact">تواصل معنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>الدعم</h3>
+                    <ul>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 Eduplay. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for functionality -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/ar-features.js"></script>
+    <script src="scripts/image-loader.js"></script>
+    <script src="scripts/smooth-navigation.js"></script>
+    <script src="scripts/ar-demo.js"></script>
+    <!-- إضافة سكريبت للتعامل مع أزرار عرض النموذج -->
+    <script>
+        // وظيفة عرض نموذج Sketchfab للخلية مع زر اختبار الفهم
+        function showCellModel() {
+            // إنشاء العناصر
+            const modal = document.createElement('div');
+            modal.style.position = 'fixed';
+            modal.style.left = '0';
+            modal.style.top = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0,0,0,0.7)';
+            modal.style.zIndex = '9999';
+            modal.style.display = 'flex';
+            modal.style.alignItems = 'center';
+            modal.style.justifyContent = 'center';
+            
+            // محتوى النافذة
+            const modalContent = document.createElement('div');
+            modalContent.style.backgroundColor = 'white';
+            modalContent.style.padding = '20px';
+            modalContent.style.borderRadius = '10px';
+            modalContent.style.width = '90%';
+            modalContent.style.maxWidth = '800px';
+            modalContent.style.maxHeight = '90%';
+            modalContent.style.overflow = 'auto';
+            modalContent.style.position = 'relative';
+            
+            // زر الإغلاق
+            const closeButton = document.createElement('span');
+            closeButton.innerHTML = '&times;';
+            closeButton.style.position = 'absolute';
+            closeButton.style.top = '10px';
+            closeButton.style.right = '15px';
+            closeButton.style.fontSize = '25px';
+            closeButton.style.cursor = 'pointer';
+            closeButton.style.color = '#ff4444';
+            closeButton.style.fontWeight = 'bold';
+            closeButton.onclick = function() {
+                document.body.removeChild(modal);
+            };
+            
+            // محتوى النموذج
+            modalContent.innerHTML = `
+                <h3 style="text-align: center; margin-top: 5px; margin-bottom: 20px;">تركيب الخلية النباتية</h3>
+                <div class="sketchfab-embed-wrapper"> 
+                    <iframe title="Plant Cell Structure" frameborder="0" allowfullscreen mozallowfullscreen="true" 
+                        webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" 
+                        xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered 
+                        web-share style="width: 100%; height: 400px;" 
+                        src="https://sketchfab.com/models/7d97843eeaf948c387f94f96342abe00/embed"> 
+                    </iframe> 
+                    <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> 
+                        <a href="https://sketchfab.com/3d-models/plant-cell-structure-7d97843eeaf948c387f94f96342abe00?utm_medium=embed&utm_campaign=share-popup&utm_content=7d97843eeaf948c387f94f96342abe00" 
+                        target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Plant Cell Structure </a> 
+                        by <a href="https://sketchfab.com/appsnation.co?utm_medium=embed&utm_campaign=share-popup&utm_content=7d97843eeaf948c387f94f96342abe00" 
+                        target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> appsnation </a> 
+                        on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=7d97843eeaf948c387f94f96342abe00" 
+                        target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                    </p>
+                </div>
+                <div style="margin-top: 15px; padding: 10px; background-color: #f8f9fa; border-radius: 8px;">
+                    <h4 style="margin-bottom: 10px;">معلومات عن الخلية النباتية:</h4>
+                    <ul style="padding-right: 20px; margin-bottom: 15px;">
+                        <li>الخلية النباتية هي الوحدة الأساسية في بناء النبات</li>
+                        <li>تحتوي على جدار خلوي يعطيها الدعم والشكل</li>
+                        <li>البلاستيدات الخضراء تحتوي على الكلوروفيل وتقوم بعملية البناء الضوئي</li>
+                        <li>الفجوة المركزية كبيرة وتخزن الماء والمواد الغذائية</li>
+                        <li>النواة تحتوي على المادة الوراثية (DNA) وتتحكم في نشاط الخلية</li>
+                    </ul>
+                    <div style="text-align: center; margin-top: 15px;">
+                        <button id="test-understanding-btn" style="background-color: #4F46E5; color: white; border: none; padding: 10px 20px; 
+                        border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: 500;">اختبار الفهم</button>
+                    </div>
+                </div>
+            `;
+            
+            // إضافة زر الإغلاق والمحتوى
+            modalContent.appendChild(closeButton);
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+            
+            // إغلاق النافذة عند النقر خارجها
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    document.body.removeChild(modal);
+                }
+            });
+
+            // إضافة مستمع الحدث لزر اختبار الفهم
+            setTimeout(() => {
+                const testBtn = document.getElementById('test-understanding-btn');
+                if (testBtn) {
+                    testBtn.addEventListener('click', function() {
+                        document.body.removeChild(modal);
+                        showCellQuiz();
+                    });
+                }
+            }, 100);
+        }
+
+        // وظيفة عرض اختبار الفهم للخلية النباتية
+        function showCellQuiz() {
+            // إنشاء العناصر
+            const modal = document.createElement('div');
+            modal.style.position = 'fixed';
+            modal.style.left = '0';
+            modal.style.top = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0,0,0,0.7)';
+            modal.style.zIndex = '9999';
+            modal.style.display = 'flex';
+            modal.style.alignItems = 'center';
+            modal.style.justifyContent = 'center';
+            
+            // محتوى النافذة
+            const modalContent = document.createElement('div');
+            modalContent.style.backgroundColor = 'white';
+            modalContent.style.padding = '20px';
+            modalContent.style.borderRadius = '10px';
+            modalContent.style.width = '90%';
+            modalContent.style.maxWidth = '800px';
+            modalContent.style.maxHeight = '90%';
+            modalContent.style.overflow = 'auto';
+            modalContent.style.position = 'relative';
+            
+            // زر الإغلاق
+            const closeButton = document.createElement('span');
+            closeButton.innerHTML = '&times;';
+            closeButton.style.position = 'absolute';
+            closeButton.style.top = '10px';
+            closeButton.style.right = '15px';
+            closeButton.style.fontSize = '25px';
+            closeButton.style.cursor = 'pointer';
+            closeButton.style.color = '#ff4444';
+            closeButton.style.fontWeight = 'bold';
+            closeButton.onclick = function() {
+                document.body.removeChild(modal);
+            };
+            
+            // بيانات الاختبار
+            const quizQuestions = [
+                {
+                    question: "ما هي العضية التي تقوم بعملية البناء الضوئي في الخلية النباتية؟",
+                    options: ["البلاستيدات الخضراء", "الميتوكوندريا", "النواة", "الفجوة المركزية"],
+                    correct: 0
+                },
+                {
+                    question: "ما الذي يعطي الخلية النباتية شكلها ودعمها؟",
+                    options: ["النواة", "جدار الخلية", "غشاء الخلية", "البلاستيدات الخضراء"],
+                    correct: 1
+                },
+                {
+                    question: "أين توجد المادة الوراثية في الخلية النباتية؟",
+                    options: ["في الفجوة المركزية", "في جدار الخلية", "في النواة", "في البلاستيدات الخضراء"],
+                    correct: 2
+                }
+            ];
+            
+            // إنشاء محتوى الاختبار
+            let quizHTML = `
+                <h3 style="text-align: center; margin-top: 5px; margin-bottom: 20px;">اختبار فهم تركيب الخلية النباتية</h3>
+                <div id="quiz-container" style="margin-bottom: 20px;">
+            `;
+            
+            quizQuestions.forEach((q, qIndex) => {
+                quizHTML += `
+                    <div class="question" style="margin-bottom: 25px; padding: 15px; background-color: #f9f9f9; border-radius: 8px;">
+                        <p style="font-weight: 600; margin-bottom: 15px; font-size: 18px;">${qIndex + 1}. ${q.question}</p>
+                        <div class="options" style="display: grid; gap: 10px;">
+                `;
+                
+                q.options.forEach((option, oIndex) => {
+                    quizHTML += `
+                        <div class="option" style="display: flex; align-items: center; padding: 10px; 
+                        border: 1px solid #ddd; border-radius: 5px; cursor: pointer;"
+                        data-question="${qIndex}" data-option="${oIndex}">
+                            <span class="option-marker" style="width: 20px; height: 20px; margin-left: 10px; 
+                            border: 2px solid #4F46E5; border-radius: 50%; display: flex; 
+                            justify-content: center; align-items: center; font-size: 12px; color: transparent;">
+                            </span>
+                            <span>${option}</span>
+                        </div>
+                    `;
+                });
+                
+                quizHTML += `
+                        </div>
+                        <div class="feedback" style="margin-top: 10px; font-weight: 500; display: none;"></div>
+                    </div>
+                `;
+            });
+            
+            quizHTML += `
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button id="submit-quiz" style="background-color: #4F46E5; color: white; border: none; 
+                    padding: 12px 25px; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: 500;">
+                    تحقق من إجاباتك</button>
+                </div>
+                <div id="quiz-result" style="margin-top: 20px; text-align: center; display: none;"></div>
+            `;
+            
+            modalContent.innerHTML = quizHTML;
+            
+            // إضافة زر الإغلاق والمحتوى
+            modalContent.appendChild(closeButton);
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+            
+            // إغلاق النافذة عند النقر خارجها
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    document.body.removeChild(modal);
+                }
+            });
+            
+            // إضافة التفاعلية للاختبار
+            const optionElements = modalContent.querySelectorAll('.option');
+            optionElements.forEach(option => {
+                option.addEventListener('click', function() {
+                    const questionIndex = this.dataset.question;
+                    const optionIndex = this.dataset.option;
+                    
+                    // إلغاء تحديد جميع الخيارات في هذا السؤال
+                    const questionOptions = modalContent.querySelectorAll(`.option[data-question="${questionIndex}"]`);
+                    questionOptions.forEach(opt => {
+                        opt.style.backgroundColor = '';
+                        opt.style.borderColor = '#ddd';
+                        opt.querySelector('.option-marker').innerHTML = '';
+                        opt.querySelector('.option-marker').style.color = 'transparent';
+                    });
+                    
+                    // تحديد الخيار المختار
+                    this.style.backgroundColor = 'rgba(79, 70, 229, 0.1)';
+                    this.style.borderColor = '#4F46E5';
+                    this.querySelector('.option-marker').innerHTML = '✓';
+                    this.querySelector('.option-marker').style.color = '#4F46E5';
+                    
+                    // تخزين الإجابة المختارة
+                    this.dataset.selected = true;
+                });
+            });
+            
+            // التحقق من الإجابات عند النقر على زر التحقق
+            const submitBtn = modalContent.querySelector('#submit-quiz');
+            submitBtn.addEventListener('click', function() {
+                let score = 0;
+                let attempted = false;
+                
+                quizQuestions.forEach((q, qIndex) => {
+                    const selectedOption = modalContent.querySelector(`.option[data-question="${qIndex}"][data-selected="true"]`);
+                    const feedbackElement = modalContent.querySelectorAll('.feedback')[qIndex];
+                    
+                    if (selectedOption) {
+                        attempted = true;
+                        const selectedIndex = parseInt(selectedOption.dataset.option);
+                        
+                        if (selectedIndex === q.correct) {
+                            // إجابة صحيحة
+                            score++;
+                            selectedOption.style.backgroundColor = 'rgba(16, 185, 129, 0.1)';
+                            selectedOption.style.borderColor = '#10B981';
+                            feedbackElement.textContent = '✓ إجابة صحيحة';
+                            feedbackElement.style.color = '#10B981';
+                            feedbackElement.style.display = 'block';
+                        } else {
+                            // إجابة خاطئة
+                            selectedOption.style.backgroundColor = 'rgba(239, 68, 68, 0.1)';
+                            selectedOption.style.borderColor = '#EF4444';
+                            
+                            // تحديد الإجابة الصحيحة
+                            const correctOption = modalContent.querySelector(`.option[data-question="${qIndex}"][data-option="${q.correct}"]`);
+                            correctOption.style.backgroundColor = 'rgba(16, 185, 129, 0.1)';
+                            correctOption.style.borderColor = '#10B981';
+                            
+                            feedbackElement.textContent = '✗ إجابة خاطئة. الإجابة الصحيحة هي: ' + q.options[q.correct];
+                            feedbackElement.style.color = '#EF4444';
+                            feedbackElement.style.display = 'block';
+                        }
+                    }
+                });
+                
+                // عرض النتيجة النهائية
+                const resultElement = modalContent.querySelector('#quiz-result');
+                
+                if (!attempted) {
+                    resultElement.innerHTML = `
+                        <div style="padding: 15px; background-color: #FEF2F2; border-radius: 8px; color: #EF4444;">
+                            الرجاء الإجابة على الأسئلة أولاً
+                        </div>
+                    `;
+                    resultElement.style.display = 'block';
+                    return;
+                }
+                
+                const percentage = Math.round((score / quizQuestions.length) * 100);
+                let resultMessage, resultColor, resultBg;
+                
+                if (percentage >= 80) {
+                    resultMessage = 'ممتاز! لقد فهمت تركيب الخلية النباتية بشكل جيد جداً.';
+                    resultColor = '#10B981';
+                    resultBg = '#ECFDF5';
+                } else if (percentage >= 60) {
+                    resultMessage = 'جيد! يمكنك مراجعة بعض المعلومات لتحسين فهمك.';
+                    resultColor = '#F59E0B';
+                    resultBg = '#FFFBEB';
+                } else {
+                    resultMessage = 'تحتاج إلى مزيد من الدراسة. حاول مراجعة المعلومات مرة أخرى.';
+                    resultColor = '#EF4444';
+                    resultBg = '#FEF2F2';
+                }
+                
+                resultElement.innerHTML = `
+                    <div style="padding: 20px; background-color: ${resultBg}; border-radius: 8px; color: ${resultColor};">
+                        <h4 style="margin-bottom: 10px; font-size: 18px;">النتيجة: ${score} من ${quizQuestions.length} (${percentage}%)</h4>
+                        <p>${resultMessage}</p>
+                        <div style="margin-top: 15px;">
+                            <button id="retry-quiz" style="background-color: ${resultColor}; color: white; border: none; 
+                            padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-left: 10px;">إعادة الاختبار</button>
+                            <button id="view-model-again" style="background-color: #4F46E5; color: white; border: none; 
+                            padding: 10px 20px; border-radius: 5px; cursor: pointer;">عرض النموذج مرة أخرى</button>
+                        </div>
+                    </div>
+                `;
+                
+                resultElement.style.display = 'block';
+                submitBtn.style.display = 'none';
+                
+                // إضافة وظائف الأزرار في النتيجة
+                const retryBtn = modalContent.querySelector('#retry-quiz');
+                retryBtn.addEventListener('click', function() {
+                    document.body.removeChild(modal);
+                    showCellQuiz();
+                });
+                
+                const viewModelBtn = modalContent.querySelector('#view-model-again');
+                viewModelBtn.addEventListener('click', function() {
+                    document.body.removeChild(modal);
+                    showCellModel();
+                });
+            });
+        }
+
+        // تعديل نفس النمط لنماذج أخرى
+        function showDigestiveModel() {
+            // ... (نفس الكود مع تعديل النموذج وإضافة زر اختبار الفهم)
+        }
+
+        function showAtomModel() {
+            // ... (نفس الكود مع تعديل النموذج وإضافة زر اختبار الفهم)
+        }
+    </script>
+    <script src="scripts/navigation.js"></script>
+</body>
+</html>

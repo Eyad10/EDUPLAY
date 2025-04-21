@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تجربة التطبيق - Eduplay</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/responsive.css">
+    <style>
+        /* أنماط إضافية للاختبارات التفاعلية */
+        .quiz-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .quiz-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #ff4444;
+            font-weight: bold;
+        }
+
+        .question-img {
+            width: 100%;
+            max-width: 400px;
+            margin: 15px auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .quiz-option {
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            border-color: #4F46E5;
+            background-color: #EBF4FF;
+        }
+
+        .quiz-option.selected {
+            border-color: #4F46E5;
+            background-color: rgba(79, 70, 229, 0.1);
+        }
+
+        .quiz-option.correct {
+            border-color: #10B981;
+            background-color: rgba(16, 185, 129, 0.1);
+        }
+
+        .quiz-option.incorrect {
+            border-color: #EF4444;
+            background-color: rgba(239, 68, 68, 0.1);
+        }
+
+        .option-marker {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4F46E5;
+            border-radius: 50%;
+            margin-left: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .feedback.correct {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10B981;
+        }
+
+        .feedback.incorrect {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #EF4444;
+        }
+
+        .quiz-navigation {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .result-good {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10B981;
+        }
+
+        .result-average {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: #F59E0B;
+        }
+
+        .result-poor {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #EF4444;
+        }
+
+        .quiz-result-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* تحسين عرض النموذج ثلاثي الأبعاد */
+        .model-info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+
+        .model-info h4 {
+            margin-bottom: 10px;
+        }
+
+        .model-info ul {
+            padding-right: 20px;
+            margin-bottom: 15px;
+        }
+
+        .model-info li {
+            margin-bottom: 5px;
+        }
+
+        .test-btn {
+            display: block;
+            margin: 15px auto 0;
+            background-color: #4F46E5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .test-btn:hover {
+            background-color: #4338CA;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .quiz-navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .quiz-result-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                    <img src="../assets/logo/logo.png" alt="EDUplay Logo" style="height: 120px !important; margin-left: 18px;">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html" onclick="navigateToSection('home')">الرئيسية</a></li>
+                    <li><a href="../index.html" onclick="navigateToSection('about-ar')">عن الواقع المعزز</a></li>
+                    <li><a href="../index.html" onclick="navigateToSection('impact')">الأثر</a></li>
+                    <li><a href="../index.html" onclick="navigateToSection('teacher')">ركن المعلم</a></li>
+                    <li><a href="../index.html" onclick="navigateToSection('contact')">تواصل معنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="container">
+            <h2 class="section-title">استكشف الفئات التعليمية</h2>
+            <div class="categories">
+                <div class="category card" data-ar-type="science">
+                    <h3>العلوم</h3>
+                    <p>استمتع بتجارب تعليمية تفاعلية في مجال العلوم.</p>
+                    <button class="ar-interaction-button" data-ar-type="science">استكشف</button>
+                </div>
+            </div>
+        </section>
+        <section id="ar-demo-section" class="container" style="display: none;">
+            <h2 class="section-title">تجربة الواقع المعزز</h2>
+            <div id="ar-container">
+                <!-- هنا سيتم عرض تجربة الواقع المعزز -->
+            </div>
+            <button id="back-to-categories" class="secondary-btn" style="margin-top: 20px;">العودة للفئات</button>
+        </section>
+    </main>
+    
+    <!-- نافذة اختبار الفهم -->
+    <div id="quiz-modal" class="quiz-modal">
+        <div class="quiz-container">
+            <span class="close-btn" id="close-quiz">&times;</span>
+            <h3 id="quiz-title" style="text-align: center; margin-bottom: 20px;">اختبار فهم تركيب الخلية النباتية</h3>
+            
+            <div id="question-container">
+                <h4 id="question-text" style="font-size: 18px; margin-bottom: 15px;"></h4>
+                <img id="question-img" class="question-img" src="" alt="صورة توضيحية">
+                
+                <div class="quiz-options" id="options-container">
+                    <!-- سيتم إنشاء الخيارات بواسطة JavaScript -->
+                </div>
+                
+                <div id="feedback" class="feedback"></div>
+                
+                <div class="quiz-navigation">
+                    <span id="question-progress">السؤال 1 من 3</span>
+                    <button id="next-btn" class="test-btn" style="display: none;">السؤال التالي</button>
+                </div>
+            </div>
+            
+            <div id="quiz-result" class="quiz-result">
+                <!-- سيتم إنشاء نتيجة الاختبار بواسطة JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="../assets/logo/logo.png" alt="EDUplay Logo" style="height: 55px; margin-left: 10px;">
+                    </div>
+                    <p>نسعى لتغيير طريقة التعليم في الوطن العربي من خلال توظيف التقنيات الحديثة لخلق تجارب تعليمية ممتعة وفعالة.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="../index.html#home">الرئيسية</a></li>
+                        <li><a href="../index.html#about-ar">عن الواقع المعزز</a></li>
+                        <li><a href="../index.html#impact">الأثر</a></li>
+                        <li><a href="../index.html#teacher">ركن المعلم</a></li>
+                        <li><a href="../index.html#contact">تواصل معنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>الدعم</h3>
+                    <ul>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 Eduplay. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/ar-features.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // التعريفات الأساسية للعناصر
+            const arButtons = document.querySelectorAll('.ar-interaction-button');
+            const categoriesSection = document.querySelector('.categories').parentElement;
+            const arDemoSection = document.getElementById('ar-demo-section');
+            const arContainer = document.getElementById('ar-container');
+            const backButton = document.getElementById('back-to-categories');
+            
+            // طباعة معلومات للتحقق من المشكلة
+            console.log('تم تحميل السكريبت');
+            console.log('عدد أزرار التفاعل:', arButtons.length);
+            
+            // إضافة مستمعي الأحداث للأزرار
+            arButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    console.log('تم النقر على زر:', this.dataset.arType);
+                    
+                    const arType = this.dataset.arType;
+                    
+                    // إخفاء قسم الفئات وإظهار قسم العرض التجريبي
+                    categoriesSection.style.display = 'none';
+                    arDemoSection.style.display = 'block';
+                    
+                    // عرض محتوى مناسب حسب نوع التجربة
+                    switch(arType) {
+                        case 'science':
+                            console.log('عرض نموذج العلوم');
+                            arContainer.innerHTML = `
+                                <h3>تجربة العلوم</h3>
+                                <p>استكشف نماذج ثلاثية الأبعاد للخلية النباتية، الجهاز الهضمي، وتركيب الذرة.</p>
+                                
+                                <h4 style="margin-top: 20px; margin-bottom: 10px;">تركيب الخلية النباتية</h4>
+                                <div class="sketchfab-embed-wrapper"> 
+                                    <iframe title="Plant Cell Structure" frameborder="0" allowfullscreen mozallowfullscreen="true" 
+                                        webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" 
+                                        xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered 
+                                        web-share style="width: 100%; height: 400px;" 
+                                        src="https://sketchfab.com/models/7d97843eeaf948c387f94f96342abe00/embed"> 
+                                    </iframe> 
+                                    <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> 
+                                        <a href="https://sketchfab.com/3d-models/plant-cell-structure-7d97843eeaf948c387f94f96342abe00?utm_medium=embed&utm_campaign=share-popup&utm_content=7d97843eeaf948c387f94f96342abe00" 
+                                        target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Plant Cell Structure </a> 
+                                        by <a href="https://sketchfab.com/appsnation.co?utm_medium=embed&utm_campaign=share-popup&utm_content=7d97843eeaf948c387f94f96342abe00" 
+                                        target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> appsnation </a> 
+                                        on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=7d97843eeaf948c387f94f96342abe00" 
+                                        target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                    </p>
+                                </div>
+                                
+                                <div class="model-info">
+                                    <h4>معلومات عن الخلية النباتية:</h4>
+                                    <ul>
+                                        <li>الخلية النباتية هي الوحدة الأساسية في بناء النبات</li>
+                                        <li>تحتوي على جدار خلوي يعطيها الدعم والشكل</li>
+                                        <li>البلاستيدات الخضراء تحتوي على الكلوروفيل وتقوم بعملية البناء الضوئي</li>
+                                        <li>الفجوة المركزية كبيرة وتخزن الماء والمواد الغذائية</li>
+                                        <li>النواة تحتوي على المادة الوراثية (DNA) وتتحكم في نشاط الخلية</li>
+                                    </ul>
+                                    <button id="test-cell-btn" class="test-btn">اختبار فهم الخلية النباتية</button>
+                                </div>
+                                
+                                <h4 style="margin-top: 30px; margin-bottom: 10px;">الجهاز الهضمي</h4>
+                                <div class="sketchfab-embed-wrapper"> 
+                                    <iframe title="Digestive System" frameborder="0" allowfullscreen mozallowfullscreen="true" 
+                                        webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" 
+                                        xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered 
+                                        web-share style="width: 100%; height: 400px;" 
+                                        src="https://sketchfab.com/models/3f598117d05044b88e95be6c5a3c59b9/embed"> 
+                                    </iframe> 
+                                    <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> 
+                                        <a href="https://sketchfab.com/3d-models/digestive-system-3f598117d05044b88e95be6c5a3c59b9?utm_medium=embed&utm_campaign=share-popup&utm_content=3f598117d05044b88e95be6c5a3c59b9" 
+                                        target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Digestive System </a> 
+                                        by <a href="https://sketchfab.com/lwjcxhlsc?utm_medium=embed&utm_campaign=share-popup&utm_content=3f598117d05044b88e95be6c5a3c59b9" 
+                                        target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> lwjcxhlsc </a> 
+                                        on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=3f598117d05044b88e95be6c5a3c59b9" 
+                                        target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                    </p>
+                                </div>
+                                
+                                <div class="model-info">
+                                    <h4>معلومات عن الجهاز الهضمي:</h4>
+                                    <ul>
+                                        <li>الجهاز الهضمي مسؤول عن تحويل الطعام إلى مواد مغذية يمكن للجسم امتصاصها</li>
+                                        <li>يبدأ الهضم في الفم عن طريق المضغ وإفراز اللعاب</li>
+                                        <li>المعدة تفرز الأحماض والإنزيمات لتكسير الطعام</li>
+                                        <li>الأمعاء الدقيقة هي موقع امتصاص معظم العناصر الغذائية</li>
+                                        <li>الكبد يساعد في تصنيع العصارة الصفراوية التي تساعد في هضم الدهون</li>
+                                    </ul>
+                                    <button id="test-digestive-btn" class="test-btn">اختبار فهم الجهاز الهضمي</button>
+                                </div>
+                                
+                                <h4 style="margin-top: 30px; margin-bottom: 10px;">تركيب الذرة</h4>
+                                <div class="sketchfab-embed-wrapper"> 
+                                    <iframe title="Chemistry_Atomic structure" frameborder="0" allowfullscreen mozallowfullscreen="true" 
+                                        webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" 
+                                        xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered 
+                                        web-share style="width: 100%; height: 400px;" 
+                                        src="https://sketchfab.com/models/329e3e423749420db86334947999061f/embed"> 
+                                    </iframe> 
+                                    <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> 
+                                        <a href="https://sketchfab.com/3d-models/chemistry-atomic-structure-329e3e423749420db86334947999061f?utm_medium=embed&utm_campaign=share-popup&utm_content=329e3e423749420db86334947999061f" 
+                                        target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Chemistry_Atomic structure </a> 
+                                        by <a href="https://sketchfab.com/pugar.wulandari?utm_medium=embed&utm_campaign=share-popup&utm_content=329e3e423749420db86334947999061f" 
+                                        target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> pugar.wulandari </a> 
+                                        on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=329e3e423749420db86334947999061f" 
+                                        target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                                    </p>
+                                </div>
+                                
+                                <div class="model-info">
+                                    <h4>معلومات عن تركيب الذرة:</h4>
+                                    <ul>
+                                        <li>الذرة هي أصغر وحدة من المادة تحتفظ بخصائص العنصر</li>
+                                        <li>تتكون الذرة من نواة مركزية تحتوي على البروتونات والنيوترونات</li>
+                                        <li>الإلكترونات تدور حول النواة في مدارات محددة</li>
+                                        <li>البروتونات تحمل شحنة موجبة والإلكترونات تحمل شحنة سالبة</li>
+                                        <li>النيوترونات متعادلة الشحنة وتوجد في نواة الذرة</li>
+                                    </ul>
+                                    <button id="test-atom-btn" class="test-btn">اختبار فهم تركيب الذرة</button>
+                                </div>
+                            `;
+                            break;
+                    }
+
+                    // إضافة مستمعي الأحداث لأزرار الاختبار
+                    setTimeout(() => {
+                        document.getElementById('test-cell-btn').addEventListener('click', () => startQuiz('cell'));
+                        document.getElementById('test-digestive-btn').addEventListener('click', () => startQuiz('digestive'));
+                        document.getElementById('test-atom-btn').addEventListener('click', () => startQuiz('atom'));
+                    }, 100);
+                });
+            });
+            
+            // زر العودة للفئات
+            backButton.addEventListener('click', function() {
+                arDemoSection.style.display = 'none';
+                categoriesSection.style.display = 'block';
+            });
+
+            // ----- نظام اختبار الفهم ----- //
+            const quizModal = document.getElementById('quiz-modal');
+            const closeQuizBtn = document.getElementById('close-quiz');
+            const quizTitle = document.getElementById('quiz-title');
+            const questionText = document.getElementById('question-text');
+            const questionImg = document.getElementById('question-img');
+            const optionsContainer = document.getElementById('options-container');
+            const feedbackEl = document.getElementById('feedback');
+            const questionProgress = document.getElementById('question-progress');
+            const nextBtn = document.getElementById('next-btn');
+            const quizResult = document.getElementById('quiz-result');
+            const questionContainer = document.getElementById('question-container');
+
+            // قائمة أسئلة الخلية النباتية
+            const cellQuestions = [
+                {
+                    question: "ما هي العضية رقم 10 في الصورة؟",
+                    image: "/assets/topics/cell_1.png",
+                    options: [
+                        { text: "البلاستيدات الخضراء", correct: true },
+                        { text: "الميتوكوندريا", correct: false },
+                        { text: "النواة", correct: false },
+                        { text: "جدار الخلية", correct: false }
+                    ],
+                    feedback: {
+                        correct: "ممتاز! هذه هي البلاستيدات الخضراء التي تحتوي على الكلوروفيل وتقوم بعملية البناء الضوئي.",
+                        incorrect: "للأسف، الإجابة غير صحيحة. هذه هي البلاستيدات الخضراء التي تقوم بعملية البناء الضوئي."
+                    }
+                },
+                {
+                    question: "ما هي العضية رقم 1 في الصورة؟",
+                    image: "/assets/topics/cell_2.png",
+                    options: [
+                        { text: "الميتوكوندريا", correct: false },
+                        { text: "البلاستيدات الخضراء", correct: false },
+                        { text: "النواة", correct: true },
+                        { text: "الفجوة المركزية", correct: false }
+                    ],
+                    feedback: {
+                        correct: "ممتاز! هذه هي النواة التي تحتوي على المادة الوراثية وتتحكم في نشاط الخلية.",
+                        incorrect: "للأسف، الإجابة غير صحيحة. هذه هي النواة التي تحتوي على المادة الوراثية."
+                    }
+                },
+                {
+                    question: "ما هي العضية رقم 4 في الصورة؟",
+                    image: "/assets/topics/cell_3.png",
+                    options: [
+                        { text: "الفجوة المركزية", correct: false },
+                        { text: "الميتوكوندريا", correct: true },
+                        { text: "البلاستيدات الخضراء", correct: false },
+                        { text: "جدار الخلية", correct: false }
+                    ],
+                    feedback: {
+                        correct: "ممتاز! هذه هي الميتوكوندريا المسؤولة عن إنتاج الطاقة في الخلية.",
+                        incorrect: "للأسف، الإجابة غير صحيحة. هذه هي الميتوكوندريا المسؤولة عن إنتاج الطاقة."
+                    }
+                }
+            ];
+
+            // قائمة أسئلة الجهاز الهضمي
+            const digestiveQuestions = [
+                {
+                    question: "ما هو العضو المشار إليه في الصورة؟",
+                    image: "/assets/topics/b2.png",
+                    options: [
+                        { text: "المعدة", correct: true },
+                        { text: "الكبد", correct: false },
+                        { text: "الأمعاء الدقيقة", correct: false },
+                        { text: "المريء", correct: false }
+                    ],
+                    feedback: {
+                        correct: "ممتاز! هذه هي المعدة التي تخزن الطعام وتفرز العصارة المعدية لهضمه.",
+                        incorrect: "للأسف، الإجابة غير صحيحة. هذه هي المعدة التي تخزن الطعام وتفرز العصارة المعدية."
+                    }
+                },
+                {
+                    question: "ما هو العضو المشار إليه في الصورة؟",
+                    image: "/assets/topics/b1.png",
+                    options: [
+                        { text: "المعدة", correct: false },
+                        { text: "الأمعاء الغليظة", correct: false },
+                        { text: "الأمعاء الدقيقة", correct: true },
+                        { text: "المريء", correct: false }
+                    ],
+                    feedback: {
+                        correct: "ممتاز! هذه هي الأمعاء الدقيقة التي تتم فيها معظم عملية امتصاص المواد الغذائية.",
+                        incorrect: "للأسف، الإجابة غير صحيحة. هذه هي الأمعاء الدقيقة التي تتم فيها معظم عملية امتصاص المواد الغذائية."
+                    }
+                },
+                {
+                    question: "ما هو العضو المشار إليه في الصورة؟",
+                    image: "/assets/topics/b3.png",
+                    options: [
+                        { text: "البنكرياس", correct: false },
+                        { text: "الكبد", correct: true },
+                        { text: "المعدة", correct: false },
+                        { text: "الطحال", correct: false }
+                    ],
+                    feedback: {
+                        correct: "ممتاز! هذا هو الكبد الذي يعتبر من أهم أعضاء الجهاز الهضمي ويقوم بتصنيع العصارة الصفراوية.",
+                        incorrect: "للأسف، الإجابة غير صحيحة. هذا هو الكبد الذي يعتبر من أهم أعضاء الجهاز الهضمي."
+                    }
+                }
+            ];
+
+            // قائمة أسئلة تركيب الذرة
+            const atomQuestions = [
+                {
+                    question: "ما هو الجزء رقم 4 في الصورة؟",
+                    image: "/assets/topics/a1.png",
+                    options: [
+                        { text: "النواة", correct: true },
+                        { text: "الإلكترون", correct: false },
+                        { text: "المدار", correct: false },
+                        { text: "الذرة بأكملها", correct: false }
+                    ],
+                    feedback: {
+                        correct: "ممتاز! هذه هي النواة التي تقع في مركز الذرة وتحتوي على البروتونات والنيوترونات.",
+                        incorrect: "للأسف، الإجابة غير صحيحة. هذه هي النواة التي تقع في مركز الذرة."
+                    }
+                },
+                {
+                    question: "ما هي الجسيمات المشار إليها برقم 2 في الصورة؟",
+                    image: "/assets/topics/a1.png",
+                    options: [
+                        { text: "البروتونات", correct: false },
+                        { text: "النيوترونات", correct: false },
+                        { text: "الإلكترونات", correct: true },
+                        { text: "الفوتونات", correct: false }
+                    ],
+                    feedback: {
+                        correct: "ممتاز! هذه هي الإلكترونات التي تدور حول النواة في مدارات محددة.",
+                        incorrect: "للأسف، الإجابة غير صحيحة. هذه هي الإلكترونات التي تدور حول النواة."
+                    }
+                },
+                {
+                    question: "ما هي الجسيمات المشار إليها برقم 5 في الصورة؟",
+                    image: "/assets/topics/a3.png",
+                    options: [
+                        { text: "الإلكترونات", correct: false },
+                        { text: "البروتونات", correct: true },
+                        { text: "النيوترونات", correct: false },
+                        { text: "الكواركات", correct: false }
+                    ],
+                    feedback: {
+                        correct: "ممتاز! هذه هي البروتونات التي توجد في نواة الذرة وتحمل شحنة موجبة.",
+                        incorrect: "للأسف، الإجابة غير صحيحة. هذه هي البروتونات التي توجد في نواة الذرة."
+                    }
+                }
+            ];
+
+            // متغيرات الاختبار
+            let currentQuiz = [];
+            let currentQuestionIndex = 0;
+            let score = 0;
+            let quizType = '';
+
+            // إغلاق نافذة الاختبار
+            closeQuizBtn.addEventListener('click', () => {
+                quizModal.classList.remove('active');
+            });
+
+            // بدء الاختبار
+            function startQuiz(type) {
+                quizType = type;
+                
+                // تحديد نوع الاختبار
+                if (type === 'cell') {
+                    currentQuiz = cellQuestions;
+                    quizTitle.textContent = "اختبار فهم تركيب الخلية النباتية";
+                } else if (type === 'digestive') {
+                    currentQuiz = digestiveQuestions;
+                    quizTitle.textContent = "اختبار فهم الجهاز الهضمي";
+                } else if (type === 'atom') {
+                    currentQuiz = atomQuestions;
+                    quizTitle.textContent = "اختبار فهم تركيب الذرة";
+                }
+                
+                // تهيئة الاختبار
+                currentQuestionIndex = 0;
+                score = 0;
+                questionContainer.style.display = 'block';
+                quizResult.style.display = 'none';
+                quizModal.classList.add('active');
+                
+                // عرض السؤال الأول
+                showQuestion();
+            }
+
+            // عرض السؤال الحالي
+            function showQuestion() {
+                // إعادة تعيين الحالة
+                resetState();
+                
+                // استدعاء بيانات السؤال الحالي
+                const question = currentQuiz[currentQuestionIndex];
+                
+                // تحديث معلومات السؤال
+                questionText.textContent = question.question;
+                questionImg.src = question.image;
+                questionProgress.textContent = `السؤال ${currentQuestionIndex + 1} من ${currentQuiz.length}`;
+                
+                // إنشاء الخيارات
+                question.options.forEach((option, index) => {
+                    const optionEl = document.createElement('div');
+                    optionEl.className = 'quiz-option';
+                    
+                    const marker = document.createElement('span');
+                    marker.className = 'option-marker';
+                    marker.textContent = String.fromCharCode(65 + index); // A, B, C, D
+                    
+                    const text = document.createElement('span');
+                    text.textContent = option.text;
+                    
+                    optionEl.appendChild(marker);
+                    optionEl.appendChild(text);
+                    optionEl.addEventListener('click', () => selectOption(optionEl, index, option.correct));
+                    
+                    optionsContainer.appendChild(optionEl);
+                });
+            }
+
+            // إعادة تعيين حالة الاختبار
+            function resetState() {
+                nextBtn.style.display = 'none';
+                feedbackEl.style.display = 'none';
+                feedbackEl.className = 'feedback';
+                optionsContainer.innerHTML = '';
+            }
+
+            // اختيار إجابة
+            function selectOption(optionEl, optionIndex, isCorrect) {
+                // تأكد من عدم إمكانية اختيار خيار آخر بعد الإجابة
+                const options = document.querySelectorAll('.quiz-option');
+                if (options[0].classList.contains('correct') || options[0].classList.contains('incorrect')) {
+                    return;
+                }
+                
+                // تعليم الخيار المختار
+                options.forEach(opt => opt.classList.remove('selected'));
+                optionEl.classList.add('selected');
+                
+                // تحقق من الإجابة
+                if (isCorrect) {
+                    optionEl.classList.add('correct');
+                    score++;
+                    feedbackEl.textContent = currentQuiz[currentQuestionIndex].feedback.correct;
+                    feedbackEl.classList.add('correct');
+                } else {
+                    optionEl.classList.add('incorrect');
+                    feedbackEl.textContent = currentQuiz[currentQuestionIndex].feedback.incorrect;
+                    feedbackEl.classList.add('incorrect');
+                    
+                    // عرض الإجابة الصحيحة
+                    options.forEach((opt, idx) => {
+                        if (currentQuiz[currentQuestionIndex].options[idx].correct) {
+                            opt.classList.add('correct');
+                        }
+                    });
+                }
+                
+                feedbackEl.style.display = 'block';
+                nextBtn.style.display = 'block';
+            }
+
+            // زر التالي
+            nextBtn.addEventListener('click', () => {
+                currentQuestionIndex++;
+                
+                if (currentQuestionIndex < currentQuiz.length) {
+                    showQuestion();
+                } else {
+                    showResult();
+                }
+            });
+
+            // عرض النتيجة النهائية
+            function showResult() {
+                questionContainer.style.display = 'none';
+                quizResult.style.display = 'block';
+                
+                // حساب النسبة المئوية
+                const percentage = Math.round((score / currentQuiz.length) * 100);
+                
+                // تحديد الرسالة المناسبة
+                let resultMessage, resultClass, resultEmoji;
+                
+                if (percentage >= 80) {
+                    resultEmoji = '🏆';
+                    resultMessage = 'ممتاز! لقد أظهرت فهماً عميقاً للموضوع.';
+                    resultClass = 'result-good';
+                } else if (percentage >= 60) {
+                    resultEmoji = '👍';
+                    resultMessage = 'جيد! يمكنك مراجعة بعض المعلومات لتحسين فهمك.';
+                    resultClass = 'result-average';
+                } else {
+                    resultEmoji = '📚';
+                    resultMessage = 'تحتاج إلى مزيد من التعلم. حاول مراجعة المادة مرة أخرى.';
+                    resultClass = 'result-poor';
+                }
+                
+                // إنشاء محتوى النتيجة
+                quizResult.innerHTML = `
+                    <div class="${resultClass}" style="padding: 20px; border-radius: 8px;">
+                        <div style="font-size: 50px; margin-bottom: 15px;">${resultEmoji}</div>
+                        <h3 style="margin-bottom: 10px;">${resultMessage}</h3>
+                        <p style="margin-bottom: 20px;">النتيجة: ${score} من ${currentQuiz.length} (${percentage}%)</p>
+                        <div class="quiz-result-buttons">
+                            <button id="retry-quiz" class="test-btn">إعادة الاختبار</button>
+                            <button id="back-to-model" class="test-btn" style="background-color: #10B981;">العودة للنموذج</button>
+                        </div>
+                    </div>
+                `;
+                
+                // إضافة مستمعي الأحداث للأزرار
+                document.getElementById('retry-quiz').addEventListener('click', () => {
+                    startQuiz(quizType);
+                });
+                
+                document.getElementById('back-to-model').addEventListener('click', () => {
+                    quizModal.classList.remove('active');
+                });
+            }
+
+            // تعيين مستمع الحدث لإغلاق نافذة الاختبار عند النقر خارجها
+            quizModal.addEventListener('click', (e) => {
+                if (e.target === quizModal) {
+                    quizModal.classList.remove('active');
+                }
+            });
+        });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // تعريف روابط التنقل
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        // إضافة مستمع أحداث لكل رابط
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // استخراج معرف القسم المستهدف من الرابط
+                const href = this.getAttribute('href');
+                const targetSection = href.split('#')[1];
+                
+                // تخزين معرف القسم في sessionStorage
+                if (targetSection) {
+                    sessionStorage.setItem('scrollToSection', targetSection);
+                }
+                
+                // السماح للرابط بالعمل بشكل طبيعي (الانتقال إلى index.html)
+            });
+        });
+    });
+    </script>
+    <script>
+    function navigateToSection(sectionId) {
+        // تخزين القسم المراد التنقل إليه في localStorage
+        localStorage.setItem('targetSection', sectionId);
+    }
+    </script>
+</body>
+</html>

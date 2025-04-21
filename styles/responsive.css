@@ -1,0 +1,170 @@
+/* Responsive styles for the Eduplay website */
+
+@media (max-width: 1200px) {
+    body {
+        font-size: 14px;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .hero {
+        padding: 20px;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+    
+    .section-title {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 992px) {
+    .about-ar-content {
+        flex-direction: column;
+    }
+    
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        font-size: 12px;
+    }
+
+    .hero {
+        text-align: center;
+    }
+
+    .button {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .hero h1 {
+        font-size: 32px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+    
+    .hero-btns {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .feature-card h3 {
+        font-size: 20px;
+    }
+    
+    .about-ar-text h2 {
+        font-size: 28px;
+    }
+    
+    .about-ar-text p {
+        font-size: 16px;
+    }
+    
+    .stat-number {
+        font-size: 36px;
+    }
+    
+    .contact-info h2 {
+        font-size: 28px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-links {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .feature-card {
+        padding: 20px;
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .resource-img {
+        height: 150px;
+    }
+    
+    .contact-form {
+        padding: 20px;
+    }
+    
+    .categories {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .category-icon {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        font-size: 18px;
+    }
+
+    .footer {
+        font-size: 12px;
+    }
+
+    .image-responsive {
+        width: 100%;
+        height: auto;
+    }
+}
