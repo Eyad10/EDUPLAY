@@ -18,25 +18,58 @@
     }
 
     .hero h1 {
-        font-size: 40px;
+        font-size: 36px;
     }
     
     .section-title {
-        font-size: 32px;
+        font-size: 30px;
+        margin-bottom: 40px;
+    }
+
+    .container {
+        width: 95%;
+        padding: 0 10px;
     }
 }
 
 @media (max-width: 992px) {
     .about-ar-content {
         flex-direction: column;
+        gap: 30px;
     }
     
     .contact-container {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
     
     .hero h1 {
-        font-size: 36px;
+        font-size: 32px;
+    }
+    
+    .hero p {
+        font-size: 18px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .resources-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .quiz-container {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .question-img {
+        max-width: 90%;
     }
 }
 
@@ -47,6 +80,7 @@
 
     .hero {
         text-align: center;
+        padding: 50px 0;
     }
 
     .button {
@@ -61,7 +95,8 @@
     .header-container {
         flex-direction: column;
         gap: 20px;
-        padding: 15px 0;
+        padding: 10px 0;
+        position: relative;
     }
     
     nav ul {
@@ -71,29 +106,35 @@
         flex-direction: column;
         align-items: center;
         margin: 15px 0;
+        padding: 0 20px;
     }
     
     nav ul li {
         margin: 8px 0;
+        width: 100%;
+        text-align: right;
     }
     
     .hero h1 {
         font-size: 28px;
-        line-height: 1.3;
+        line-height: 1.4;
     }
     
     .hero p {
         font-size: 16px;
         line-height: 1.5;
+        margin-bottom: 30px;
     }
     
     .hero-btns {
         flex-direction: column;
         align-items: center;
+        gap: 15px;
     }
     
     .section-title {
-        font-size: 28px;
+        font-size: 26px;
+        margin-bottom: 30px;
     }
     
     .feature-card h3 {
@@ -101,23 +142,25 @@
     }
     
     .about-ar-text h2 {
-        font-size: 28px;
+        font-size: 26px;
     }
     
     .about-ar-text p {
-        font-size: 16px;
+        font-size: 15px;
     }
     
     .stat-number {
-        font-size: 36px;
+        font-size: 32px;
     }
     
     .contact-info h2 {
-        font-size: 28px;
+        font-size: 26px;
     }
     
     .footer-content {
         grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
     }
     
     .footer-links {
@@ -132,10 +175,6 @@
     .logo img {
         height: 80px !important;
         margin-left: 0;
-    }
-    
-    .hero {
-        padding: 40px 0;
     }
     
     .features-grid {
@@ -179,19 +218,88 @@
     .social-links {
         justify-content: center;
     }
+
+    .mobile-menu-toggle {
+        display: flex !important;
+    }
+    
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        height: 100vh;
+        background: white;
+        z-index: 999;
+        transition: all 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        padding-top: 80px;
+    }
+    
+    nav.active {
+        right: 0;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 10px 0;
+        font-size: 16px;
+    }
+    
+    section {
+        padding: 40px 0 !important;
+    }
+    
+    .stat-label {
+        font-size: 15px;
+    }
+    
+    .contact-info p {
+        font-size: 15px;
+    }
+    
+    .contact-form {
+        padding: 20px;
+    }
+    
+    .footer-logo {
+        justify-content: center;
+    }
+    
+    .footer-links h3::after {
+        right: 50%;
+        transform: translateX(50%);
+    }
+    
+    .footer-links ul {
+        text-align: center;
+    }
+    
+    .categories {
+        grid-template-columns: 1fr;
+    }
+    
+    .category {
+        min-height: 150px;
+    }
+    
+    iframe {
+        width: 100% !important;
+        height: 300px !important;
+    }
 }
 
 @media (max-width: 576px) {
     .hero h1 {
-        font-size: 28px;
-    }
-    
-    .section-title {
         font-size: 24px;
     }
     
+    .section-title {
+        font-size: 22px;
+    }
+    
     .feature-card {
-        padding: 20px;
+        padding: 15px;
     }
     
     .feature-icon {
@@ -204,7 +312,7 @@
     }
     
     .resource-img {
-        height: 150px;
+        height: 100px;
     }
     
     .contact-form {
@@ -217,6 +325,63 @@
     
     .category-icon {
         font-size: 24px;
+    }
+    
+    .feature-card h3 {
+        font-size: 18px;
+    }
+    
+    .resource-card h3 {
+        font-size: 18px;
+    }
+    
+    .form-group {
+        margin-bottom: 12px;
+    }
+    
+    .form-control {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    textarea.form-control {
+        min-height: 120px;
+    }
+    
+    .submit-btn {
+        padding: 10px;
+    }
+    
+    .quiz-option {
+        font-size: 14px;
+        padding: 10px;
+    }
+    
+    .option-marker {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .quiz-result-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .quiz-navigation {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    button, 
+    .download-btn, 
+    .try-now-btn, 
+    .secondary-btn,
+    .submit-btn,
+    .test-btn,
+    .ar-interaction-button {
+        min-height: 44px;
+        padding: 10px 15px;
+        font-size: 15px;
     }
 }
 
@@ -236,6 +401,7 @@
     
     .stats-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
     }
     
     .hero-btns {
@@ -245,7 +411,7 @@
     
     .hero-btns button {
         margin: 5px 0;
-        width: 100%;
+        width: 90%;
     }
     
     .form-group {
@@ -275,5 +441,66 @@
     .footer-links h3,
     .footer-links ul {
         text-align: center;
+    }
+
+    .logo img {
+        height: 70px !important;
+    }
+    
+    .hero {
+        padding: 30px 0;
+    }
+    
+    .stat-card {
+        padding: 15px;
+    }
+    
+    .about-ar-img {
+        margin: 0 -20px;
+    }
+    
+    .model-info {
+        padding: 10px;
+    }
+    
+    .model-info ul {
+        padding-right: 15px;
+    }
+    
+    .model-info li {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    
+    .quiz-container {
+        padding: 15px;
+    }
+    
+    .question-text {
+        font-size: 16px !important;
+    }
+    
+    .quiz-title {
+        font-size: 18px !important;
+    }
+    
+    .close-btn {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 360px) {
+    .contact-icon {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .contact-item span {
+        font-size: 14px;
+    }
+    
+    .sketchfab-embed-wrapper p {
+        display: none;
     }
 }
