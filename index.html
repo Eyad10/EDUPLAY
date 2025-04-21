@@ -91,7 +91,6 @@
                     <h2>ما هو الواقع المعزز؟</h2>
                     <p>الواقع المعزز (AR) هو تقنية تدمج العناصر الرقمية مع العالم الحقيقي، مما يخلق طبقة إضافية من المعلومات والتفاعل. في Eduplay، نستخدم هذه التقنية لتحويل الكتب المدرسية والمواد التعليمية إلى تجارب تفاعلية ثلاثية الأبعاد.</p>
                     <p>من خلال توجيه كاميرا الهاتف أو الجهاز اللوحي نحو صفحة أو صورة معينة، يمكن للطلاب رؤية النماذج والرسوم المتحركة تنبض بالحياة أمامهم، مما يساعدهم على فهم المفاهيم المعقدة بطريقة بسيطة وممتعة.</p>
-                    <button class="try-now-btn" id="try-now-about" onclick="redirectToTryApp()">جرّب بنفسك</button>
                 </div>
                 <div class="about-ar-img">
                     <img src="assets/topics/q.jpg" alt="استخدام الواقع المعزز في التعليم">
@@ -244,76 +243,6 @@
         </div>
     </section>
     
-    <!-- TryApp Section (Hidden Initially) -->
-    <section id="tryapp-section" style="display: none;">
-        <div class="container">
-            <h2 class="section-title">جرّب تطبيق Eduplay</h2>
-            <div class="app-demo">
-                <div class="categories">
-                    <div class="category-card active" data-category="science">
-                        <div class="category-icon">🧪</div>
-                        <h3>العلوم</h3>
-                    </div>
-                </div>
-                
-                <!-- قسم العلوم -->
-                <div class="topics active" id="science-topics">
-                    <h3>مواضيع العلوم</h3>
-                    <div class="topics-grid">
-                        <!-- تركيب الخلية -->
-                        <div class="topic-card">
-                            <div class="topic-img">
-                                <img src="assets/topics/cell-structure.jpg" alt="تركيب الخلية">
-                            </div>
-                            <h4>تركيب الخلية</h4>
-                            <p>استكشف أجزاء الخلية في نموذج ثلاثي الأبعاد تفاعلي</p>
-                            <button class="view-btn" onclick="showCellModel()">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
-                                عرض النموذج
-                            </button>
-                        </div>
-                        
-                        <!-- الجهاز الهضمي -->
-                        <div class="topic-card">
-                            <div class="topic-img">
-                                <img src="assets/images/topics/digestive-system.jpg" alt="الجهاز الهضمي">
-                            </div>
-                            <h4>الجهاز الهضمي</h4>
-                            <p>تعرف على مراحل الهضم بطريقة تفاعلية</p>
-                            <button class="view-btn" onclick="showDigestiveModel()">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
-                                عرض النموذج
-                            </button>
-                        </div>
-                        
-                        <!-- تركيب الذرة -->
-                        <div class="topic-card">
-                            <div class="topic-img">
-                                <img src="assets/images/topics/atom-structure.jpg" alt="تركيب الذرة">
-                            </div>
-                            <h4>تركيب الذرة</h4>
-                            <p>استكشف تركيب الذرة ومكوناتها</p>
-                            <button class="view-btn" onclick="showAtomModel()">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
-                                عرض النموذج
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="secondary-btn" id="back-to-home" style="margin-top: 20px;">العودة للرئيسية</button>
-        </div>
-    </section>
-    
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -321,7 +250,6 @@
                 <div class="footer-about">
                     <div class="footer-logo">
                         <img src="assets/logo/logo.png" alt="EDUplay Logo" style="height: 55px; margin-left: 10px;">
-                        <!-- يمكن إزالة كلمة Eduplay إذا كانت كلمة EDUplay موجودة بالفعل في الصورة -->
                     </div>
                     <p>نسعى لتغيير طريقة التعليم في الوطن العربي من خلال توظيف التقنيات الحديثة لخلق تجارب تعليمية ممتعة وفعالة.</p>
                     <div class="social-links">
@@ -372,364 +300,6 @@
 
     <!-- JavaScript for functionality -->
     <script src="scripts/main.js"></script>
-    <script src="scripts/ar-features.js"></script>
-    <script src="scripts/image-loader.js"></script>
-    <script src="scripts/smooth-navigation.js"></script>
-    <script src="scripts/ar-demo.js"></script>
-    <!-- إضافة سكريبت للتعامل مع أزرار عرض النموذج -->
-    <script>
-        // وظيفة عرض نموذج Sketchfab للخلية مع زر اختبار الفهم
-        function showCellModel() {
-            // إنشاء العناصر
-            const modal = document.createElement('div');
-            modal.style.position = 'fixed';
-            modal.style.left = '0';
-            modal.style.top = '0';
-            modal.style.width = '100%';
-            modal.style.height = '100%';
-            modal.style.backgroundColor = 'rgba(0,0,0,0.7)';
-            modal.style.zIndex = '9999';
-            modal.style.display = 'flex';
-            modal.style.alignItems = 'center';
-            modal.style.justifyContent = 'center';
-            
-            // محتوى النافذة
-            const modalContent = document.createElement('div');
-            modalContent.style.backgroundColor = 'white';
-            modalContent.style.padding = '20px';
-            modalContent.style.borderRadius = '10px';
-            modalContent.style.width = '90%';
-            modalContent.style.maxWidth = '800px';
-            modalContent.style.maxHeight = '90%';
-            modalContent.style.overflow = 'auto';
-            modalContent.style.position = 'relative';
-            
-            // زر الإغلاق
-            const closeButton = document.createElement('span');
-            closeButton.innerHTML = '&times;';
-            closeButton.style.position = 'absolute';
-            closeButton.style.top = '10px';
-            closeButton.style.right = '15px';
-            closeButton.style.fontSize = '25px';
-            closeButton.style.cursor = 'pointer';
-            closeButton.style.color = '#ff4444';
-            closeButton.style.fontWeight = 'bold';
-            closeButton.onclick = function() {
-                document.body.removeChild(modal);
-            };
-            
-            // محتوى النموذج
-            modalContent.innerHTML = `
-                <h3 style="text-align: center; margin-top: 5px; margin-bottom: 20px;">تركيب الخلية النباتية</h3>
-                <div class="sketchfab-embed-wrapper"> 
-                    <iframe title="Plant Cell Structure" frameborder="0" allowfullscreen mozallowfullscreen="true" 
-                        webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" 
-                        xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered 
-                        web-share style="width: 100%; height: 400px;" 
-                        src="https://sketchfab.com/models/7d97843eeaf948c387f94f96342abe00/embed"> 
-                    </iframe> 
-                    <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> 
-                        <a href="https://sketchfab.com/3d-models/plant-cell-structure-7d97843eeaf948c387f94f96342abe00?utm_medium=embed&utm_campaign=share-popup&utm_content=7d97843eeaf948c387f94f96342abe00" 
-                        target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Plant Cell Structure </a> 
-                        by <a href="https://sketchfab.com/appsnation.co?utm_medium=embed&utm_campaign=share-popup&utm_content=7d97843eeaf948c387f94f96342abe00" 
-                        target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> appsnation </a> 
-                        on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=7d97843eeaf948c387f94f96342abe00" 
-                        target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
-                    </p>
-                </div>
-                <div style="margin-top: 15px; padding: 10px; background-color: #f8f9fa; border-radius: 8px;">
-                    <h4 style="margin-bottom: 10px;">معلومات عن الخلية النباتية:</h4>
-                    <ul style="padding-right: 20px; margin-bottom: 15px;">
-                        <li>الخلية النباتية هي الوحدة الأساسية في بناء النبات</li>
-                        <li>تحتوي على جدار خلوي يعطيها الدعم والشكل</li>
-                        <li>البلاستيدات الخضراء تحتوي على الكلوروفيل وتقوم بعملية البناء الضوئي</li>
-                        <li>الفجوة المركزية كبيرة وتخزن الماء والمواد الغذائية</li>
-                        <li>النواة تحتوي على المادة الوراثية (DNA) وتتحكم في نشاط الخلية</li>
-                    </ul>
-                    <div style="text-align: center; margin-top: 15px;">
-                        <button id="test-understanding-btn" style="background-color: #4F46E5; color: white; border: none; padding: 10px 20px; 
-                        border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: 500;">اختبار الفهم</button>
-                    </div>
-                </div>
-            `;
-            
-            // إضافة زر الإغلاق والمحتوى
-            modalContent.appendChild(closeButton);
-            modal.appendChild(modalContent);
-            document.body.appendChild(modal);
-            
-            // إغلاق النافذة عند النقر خارجها
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    document.body.removeChild(modal);
-                }
-            });
-
-            // إضافة مستمع الحدث لزر اختبار الفهم
-            setTimeout(() => {
-                const testBtn = document.getElementById('test-understanding-btn');
-                if (testBtn) {
-                    testBtn.addEventListener('click', function() {
-                        document.body.removeChild(modal);
-                        showCellQuiz();
-                    });
-                }
-            }, 100);
-        }
-
-        // وظيفة عرض اختبار الفهم للخلية النباتية
-        function showCellQuiz() {
-            // إنشاء العناصر
-            const modal = document.createElement('div');
-            modal.style.position = 'fixed';
-            modal.style.left = '0';
-            modal.style.top = '0';
-            modal.style.width = '100%';
-            modal.style.height = '100%';
-            modal.style.backgroundColor = 'rgba(0,0,0,0.7)';
-            modal.style.zIndex = '9999';
-            modal.style.display = 'flex';
-            modal.style.alignItems = 'center';
-            modal.style.justifyContent = 'center';
-            
-            // محتوى النافذة
-            const modalContent = document.createElement('div');
-            modalContent.style.backgroundColor = 'white';
-            modalContent.style.padding = '20px';
-            modalContent.style.borderRadius = '10px';
-            modalContent.style.width = '90%';
-            modalContent.style.maxWidth = '800px';
-            modalContent.style.maxHeight = '90%';
-            modalContent.style.overflow = 'auto';
-            modalContent.style.position = 'relative';
-            
-            // زر الإغلاق
-            const closeButton = document.createElement('span');
-            closeButton.innerHTML = '&times;';
-            closeButton.style.position = 'absolute';
-            closeButton.style.top = '10px';
-            closeButton.style.right = '15px';
-            closeButton.style.fontSize = '25px';
-            closeButton.style.cursor = 'pointer';
-            closeButton.style.color = '#ff4444';
-            closeButton.style.fontWeight = 'bold';
-            closeButton.onclick = function() {
-                document.body.removeChild(modal);
-            };
-            
-            // بيانات الاختبار
-            const quizQuestions = [
-                {
-                    question: "ما هي العضية التي تقوم بعملية البناء الضوئي في الخلية النباتية؟",
-                    options: ["البلاستيدات الخضراء", "الميتوكوندريا", "النواة", "الفجوة المركزية"],
-                    correct: 0
-                },
-                {
-                    question: "ما الذي يعطي الخلية النباتية شكلها ودعمها؟",
-                    options: ["النواة", "جدار الخلية", "غشاء الخلية", "البلاستيدات الخضراء"],
-                    correct: 1
-                },
-                {
-                    question: "أين توجد المادة الوراثية في الخلية النباتية؟",
-                    options: ["في الفجوة المركزية", "في جدار الخلية", "في النواة", "في البلاستيدات الخضراء"],
-                    correct: 2
-                }
-            ];
-            
-            // إنشاء محتوى الاختبار
-            let quizHTML = `
-                <h3 style="text-align: center; margin-top: 5px; margin-bottom: 20px;">اختبار فهم تركيب الخلية النباتية</h3>
-                <div id="quiz-container" style="margin-bottom: 20px;">
-            `;
-            
-            quizQuestions.forEach((q, qIndex) => {
-                quizHTML += `
-                    <div class="question" style="margin-bottom: 25px; padding: 15px; background-color: #f9f9f9; border-radius: 8px;">
-                        <p style="font-weight: 600; margin-bottom: 15px; font-size: 18px;">${qIndex + 1}. ${q.question}</p>
-                        <div class="options" style="display: grid; gap: 10px;">
-                `;
-                
-                q.options.forEach((option, oIndex) => {
-                    quizHTML += `
-                        <div class="option" style="display: flex; align-items: center; padding: 10px; 
-                        border: 1px solid #ddd; border-radius: 5px; cursor: pointer;"
-                        data-question="${qIndex}" data-option="${oIndex}">
-                            <span class="option-marker" style="width: 20px; height: 20px; margin-left: 10px; 
-                            border: 2px solid #4F46E5; border-radius: 50%; display: flex; 
-                            justify-content: center; align-items: center; font-size: 12px; color: transparent;">
-                            </span>
-                            <span>${option}</span>
-                        </div>
-                    `;
-                });
-                
-                quizHTML += `
-                        </div>
-                        <div class="feedback" style="margin-top: 10px; font-weight: 500; display: none;"></div>
-                    </div>
-                `;
-            });
-            
-            quizHTML += `
-                </div>
-                <div style="text-align: center; margin-top: 20px;">
-                    <button id="submit-quiz" style="background-color: #4F46E5; color: white; border: none; 
-                    padding: 12px 25px; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: 500;">
-                    تحقق من إجاباتك</button>
-                </div>
-                <div id="quiz-result" style="margin-top: 20px; text-align: center; display: none;"></div>
-            `;
-            
-            modalContent.innerHTML = quizHTML;
-            
-            // إضافة زر الإغلاق والمحتوى
-            modalContent.appendChild(closeButton);
-            modal.appendChild(modalContent);
-            document.body.appendChild(modal);
-            
-            // إغلاق النافذة عند النقر خارجها
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    document.body.removeChild(modal);
-                }
-            });
-            
-            // إضافة التفاعلية للاختبار
-            const optionElements = modalContent.querySelectorAll('.option');
-            optionElements.forEach(option => {
-                option.addEventListener('click', function() {
-                    const questionIndex = this.dataset.question;
-                    const optionIndex = this.dataset.option;
-                    
-                    // إلغاء تحديد جميع الخيارات في هذا السؤال
-                    const questionOptions = modalContent.querySelectorAll(`.option[data-question="${questionIndex}"]`);
-                    questionOptions.forEach(opt => {
-                        opt.style.backgroundColor = '';
-                        opt.style.borderColor = '#ddd';
-                        opt.querySelector('.option-marker').innerHTML = '';
-                        opt.querySelector('.option-marker').style.color = 'transparent';
-                    });
-                    
-                    // تحديد الخيار المختار
-                    this.style.backgroundColor = 'rgba(79, 70, 229, 0.1)';
-                    this.style.borderColor = '#4F46E5';
-                    this.querySelector('.option-marker').innerHTML = '✓';
-                    this.querySelector('.option-marker').style.color = '#4F46E5';
-                    
-                    // تخزين الإجابة المختارة
-                    this.dataset.selected = true;
-                });
-            });
-            
-            // التحقق من الإجابات عند النقر على زر التحقق
-            const submitBtn = modalContent.querySelector('#submit-quiz');
-            submitBtn.addEventListener('click', function() {
-                let score = 0;
-                let attempted = false;
-                
-                quizQuestions.forEach((q, qIndex) => {
-                    const selectedOption = modalContent.querySelector(`.option[data-question="${qIndex}"][data-selected="true"]`);
-                    const feedbackElement = modalContent.querySelectorAll('.feedback')[qIndex];
-                    
-                    if (selectedOption) {
-                        attempted = true;
-                        const selectedIndex = parseInt(selectedOption.dataset.option);
-                        
-                        if (selectedIndex === q.correct) {
-                            // إجابة صحيحة
-                            score++;
-                            selectedOption.style.backgroundColor = 'rgba(16, 185, 129, 0.1)';
-                            selectedOption.style.borderColor = '#10B981';
-                            feedbackElement.textContent = '✓ إجابة صحيحة';
-                            feedbackElement.style.color = '#10B981';
-                            feedbackElement.style.display = 'block';
-                        } else {
-                            // إجابة خاطئة
-                            selectedOption.style.backgroundColor = 'rgba(239, 68, 68, 0.1)';
-                            selectedOption.style.borderColor = '#EF4444';
-                            
-                            // تحديد الإجابة الصحيحة
-                            const correctOption = modalContent.querySelector(`.option[data-question="${qIndex}"][data-option="${q.correct}"]`);
-                            correctOption.style.backgroundColor = 'rgba(16, 185, 129, 0.1)';
-                            correctOption.style.borderColor = '#10B981';
-                            
-                            feedbackElement.textContent = '✗ إجابة خاطئة. الإجابة الصحيحة هي: ' + q.options[q.correct];
-                            feedbackElement.style.color = '#EF4444';
-                            feedbackElement.style.display = 'block';
-                        }
-                    }
-                });
-                
-                // عرض النتيجة النهائية
-                const resultElement = modalContent.querySelector('#quiz-result');
-                
-                if (!attempted) {
-                    resultElement.innerHTML = `
-                        <div style="padding: 15px; background-color: #FEF2F2; border-radius: 8px; color: #EF4444;">
-                            الرجاء الإجابة على الأسئلة أولاً
-                        </div>
-                    `;
-                    resultElement.style.display = 'block';
-                    return;
-                }
-                
-                const percentage = Math.round((score / quizQuestions.length) * 100);
-                let resultMessage, resultColor, resultBg;
-                
-                if (percentage >= 80) {
-                    resultMessage = 'ممتاز! لقد فهمت تركيب الخلية النباتية بشكل جيد جداً.';
-                    resultColor = '#10B981';
-                    resultBg = '#ECFDF5';
-                } else if (percentage >= 60) {
-                    resultMessage = 'جيد! يمكنك مراجعة بعض المعلومات لتحسين فهمك.';
-                    resultColor = '#F59E0B';
-                    resultBg = '#FFFBEB';
-                } else {
-                    resultMessage = 'تحتاج إلى مزيد من الدراسة. حاول مراجعة المعلومات مرة أخرى.';
-                    resultColor = '#EF4444';
-                    resultBg = '#FEF2F2';
-                }
-                
-                resultElement.innerHTML = `
-                    <div style="padding: 20px; background-color: ${resultBg}; border-radius: 8px; color: ${resultColor};">
-                        <h4 style="margin-bottom: 10px; font-size: 18px;">النتيجة: ${score} من ${quizQuestions.length} (${percentage}%)</h4>
-                        <p>${resultMessage}</p>
-                        <div style="margin-top: 15px;">
-                            <button id="retry-quiz" style="background-color: ${resultColor}; color: white; border: none; 
-                            padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-left: 10px;">إعادة الاختبار</button>
-                            <button id="view-model-again" style="background-color: #4F46E5; color: white; border: none; 
-                            padding: 10px 20px; border-radius: 5px; cursor: pointer;">عرض النموذج مرة أخرى</button>
-                        </div>
-                    </div>
-                `;
-                
-                resultElement.style.display = 'block';
-                submitBtn.style.display = 'none';
-                
-                // إضافة وظائف الأزرار في النتيجة
-                const retryBtn = modalContent.querySelector('#retry-quiz');
-                retryBtn.addEventListener('click', function() {
-                    document.body.removeChild(modal);
-                    showCellQuiz();
-                });
-                
-                const viewModelBtn = modalContent.querySelector('#view-model-again');
-                viewModelBtn.addEventListener('click', function() {
-                    document.body.removeChild(modal);
-                    showCellModel();
-                });
-            });
-        }
-
-        // تعديل نفس النمط لنماذج أخرى
-        function showDigestiveModel() {
-            // ... (نفس الكود مع تعديل النموذج وإضافة زر اختبار الفهم)
-        }
-
-        function showAtomModel() {
-            // ... (نفس الكود مع تعديل النموذج وإضافة زر اختبار الفهم)
-        }
-    </script>
     <script src="scripts/navigation.js"></script>
 </body>
 </html>
