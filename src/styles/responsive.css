@@ -1,0 +1,336 @@
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .about-ar-content {
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .contact-container {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    
+    .hero h1 {
+      font-size: 32px;
+    }
+    
+    .hero p {
+      font-size: 18px;
+    }
+  
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .resources-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .mobile-menu-toggle {
+      display: flex;
+    }
+    
+    nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 75%;
+      height: 100vh;
+      background: white;
+      z-index: 999;
+      transition: all 0.3s ease;
+      box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+      padding-top: 80px;
+    }
+    
+    nav.active {
+      right: 0;
+    }
+    
+    nav ul {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0 20px;
+    }
+    
+    nav ul li {
+      margin: 8px 0;
+      width: 100%;
+      text-align: right;
+    }
+    
+    nav ul li a {
+      display: block;
+      padding: 10px 0;
+      font-size: 16px;
+    }
+    
+    .hero {
+      padding: 60px 0;
+    }
+    
+    .hero h1 {
+      font-size: 28px;
+      line-height: 1.4;
+    }
+    
+    .hero p {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 30px;
+    }
+    
+    .hero-btns {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .section-title {
+      font-size: 26px;
+      margin-bottom: 30px;
+    }
+    
+    .feature-card h3 {
+      font-size: 20px;
+    }
+    
+    .about-ar-text h2 {
+      font-size: 26px;
+    }
+    
+    .about-ar-text p {
+      font-size: 15px;
+    }
+    
+    .stat-number {
+      font-size: 32px;
+    }
+    
+    .contact-info h2 {
+      font-size: 26px;
+    }
+    
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      text-align: center;
+    }
+    
+    .footer-links {
+      margin-top: 20px;
+    }
+    
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .about-ar-content {
+      flex-direction: column;
+    }
+    
+    .about-ar-text {
+      order: 2;
+    }
+    
+    .about-ar-img {
+      order: 1;
+      margin-bottom: 20px;
+    }
+    
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .resources-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .contact-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .contact-info {
+      margin-bottom: 30px;
+    }
+    
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    
+    .social-links {
+      justify-content: center;
+    }
+    
+    section {
+      padding: 60px 0 !important;
+    }
+    
+    .stat-label {
+      font-size: 15px;
+    }
+    
+    .contact-info p {
+      font-size: 15px;
+    }
+    
+    .contact-form {
+      padding: 20px;
+    }
+    
+    .footer-logo {
+      justify-content: center;
+    }
+    
+    .footer-links h3::after {
+      right: 50%;
+      transform: translateX(50%);
+    }
+    
+    .footer-links ul {
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .hero h1 {
+      font-size: 24px;
+    }
+    
+    .section-title {
+      font-size: 22px;
+    }
+    
+    .feature-card {
+      padding: 20px;
+    }
+    
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .stats-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    .stat-card {
+      padding: 20px;
+    }
+    
+    .stat-number {
+      font-size: 28px;
+    }
+    
+    .contact-form {
+      padding: 15px;
+    }
+    
+    .form-control {
+      padding: 10px;
+    }
+    
+    .submit-btn {
+      padding: 10px;
+    }
+    
+    .header-container {
+      padding: 10px 0;
+    }
+    
+    .logo img {
+      height: 40px;
+    }
+    
+    .logo a {
+      font-size: 20px;
+    }
+    
+    .try-now-btn {
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+    
+    .secondary-btn {
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+    
+    .about-ar-text h2 {
+      font-size: 22px;
+    }
+    
+    .contact-info h2 {
+      font-size: 22px;
+    }
+    
+    .footer-bottom {
+      font-size: 12px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .hero h1 {
+      font-size: 22px;
+    }
+    
+    .hero p {
+      font-size: 14px;
+    }
+    
+    .section-title {
+      font-size: 20px;
+    }
+    
+    .feature-card h3 {
+      font-size: 18px;
+    }
+    
+    .about-ar-text p {
+      font-size: 14px;
+    }
+    
+    .stat-number {
+      font-size: 24px;
+    }
+    
+    .stat-label {
+      font-size: 14px;
+    }
+    
+    .contact-info p {
+      font-size: 14px;
+    }
+    
+    .contact-item {
+      font-size: 14px;
+    }
+    
+    .form-group label {
+      font-size: 14px;
+    }
+    
+    .form-control {
+      font-size: 14px;
+    }
+    
+    .submit-btn {
+      font-size: 14px;
+    }
+    
+    .footer-about p {
+      font-size: 14px;
+    }
+    
+    .footer-links h3 {
+      font-size: 16px;
+    }
+    
+    .footer-links a {
+      font-size: 14px;
+    }
+  }
