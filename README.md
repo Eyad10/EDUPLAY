@@ -1,4 +1,4 @@
-Eduplay Initiative Website
+###Eduplay Initiative Website
 
 ## Overview
 The Eduplay Initiative is an innovative educational platform that leverages augmented reality (AR) technology to create engaging, interactive learning experiences for students. Our website serves as a gateway to explore how AR can transform traditional education into an exciting adventure of discovery.
